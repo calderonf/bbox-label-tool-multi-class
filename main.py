@@ -182,11 +182,12 @@ class LabelTool():
 
         # load example bboxes
         #self.egDir = os.path.join(r'./Examples', '%03d' %(self.category))
-        self.egDir = os.path.join(r'./Examples/demo')
-        print os.path.exists(self.egDir)
-        if not os.path.exists(self.egDir):
-            return
-        filelist = glob.glob(os.path.join(self.egDir, '*.JPG'))
+        #self.egDir = os.path.join(r'./Examples/demo')
+        #print os.path.exists(self.egDir)
+        #if not os.path.exists(self.egDir):
+        #    return
+        #filelist = glob.glob(os.path.join(self.egDir, '*.JPG'))
+        """
         self.tmp = []
         self.egList = []
         random.shuffle(filelist)
@@ -199,7 +200,7 @@ class LabelTool():
             self.tmp.append(im.resize(new_size, Image.ANTIALIAS))
             self.egList.append(ImageTk.PhotoImage(self.tmp[-1]))
             self.egLabels[i].config(image = self.egList[-1], width = SIZE[0], height = SIZE[1])
-
+        """
         self.loadImage()
         print '%d images loaded from %s' %(self.total, s)
 
