@@ -3,9 +3,9 @@
 1. class.txt adapted to the segmentation of the SDM
 
 ## New Usage
-### For multi-class task, modify 'class.txt' with your own class-candidates and before labeling bbox, choose the 'Current Class' in the Combobox and make sure you click 'ComfirmClass' button.
+### For multi-class task, modify 'class.txt' with your own class-candidates and before labeling bbox, choose the 'Current Class' in the Combobox and make sure you click 'ComfirmClass' button before selecting the ROI with your mouse.
 
-### The remaining usage is the same as the origin one.
+### The remaining usage is the same as the original one forked.
 
 ------------------------------------
 
