@@ -1,6 +1,7 @@
 ### Forked from [puzzledqs/BBox-Label-Tool](https://github.com/puzzledqs/BBox-Label-Tool)
 ## Improvements
 1. class.txt adapted to the segmentation of the SDM
+2. Video example in https://youtu.be/cM_i-b-QA9A
 
 ## New Usage
 ### For multi-class task, modify 'class.txt' with your own class-candidates and before labeling bbox, choose the 'Current Class' in the Combobox and make sure you click 'ComfirmClass' button before selecting the ROI with your mouse.
