@@ -73,9 +73,22 @@ class LabelTool():
         self.mainPanel.bind("<Button-1>", self.mouseClick)
         self.mainPanel.bind("<Motion>", self.mouseMove)
         self.parent.bind("<Escape>", self.cancelBBox)  # press <Espace> to cancel current bbox
-        self.parent.bind("s", self.cancelBBox)
+        self.parent.bind("s", self.cancelBBox)# press 's' to cancel 
         self.parent.bind("a", self.prevImage) # press 'a' to go backforward
         self.parent.bind("d", self.nextImage) # press 'd' to go forward
+		self.parent.bind("0", self.set0) # press '0' to Set Class To 0
+        self.parent.bind("1", self.set1) # press '1' to Set Class To 1
+        self.parent.bind("2", self.set2) # press '2' to Set Class To 2
+        self.parent.bind("3", self.set3) # press '3' to Set Class To 3
+        self.parent.bind("4", self.set4) # press '4' to Set Class To 4
+        self.parent.bind("5", self.set5) # press '5' to Set Class To 5
+        self.parent.bind("6", self.set6) # press '6' to Set Class To 6
+        self.parent.bind("7", self.set7) # press '7' to Set Class To 7
+        self.parent.bind("8", self.set8) # press '8' to Set Class To 8
+        self.parent.bind("9", self.set9) # press '9' to Set Class To 9
+        self.parent.bind("q", self.setq) # press 'q' to Set Class To 10
+		
+		
         self.mainPanel.grid(row = 1, column = 1, rowspan = 4, sticky = W+N)
 
         # choose class
@@ -165,10 +178,10 @@ class LabelTool():
         self.imageDir = os.path.join(r'./Images', '%03d' %(self.category))
         #print self.imageDir 
         #print self.category
-        self.imageList = glob.glob(os.path.join(self.imageDir, '*.JPG'))
+        self.imageList = glob.glob(os.path.join(self.imageDir, '*.jpg'))
         #print self.imageList
         if len(self.imageList) == 0:
-            print 'No .JPG images found in the specified dir!'
+            print 'No .jpg images found in the specified dir!'
             return
 
         # default to the 1st image in the collection
@@ -182,12 +195,11 @@ class LabelTool():
 
         # load example bboxes
         #self.egDir = os.path.join(r'./Examples', '%03d' %(self.category))
-        #self.egDir = os.path.join(r'./Examples/demo')
-        #print os.path.exists(self.egDir)
-        #if not os.path.exists(self.egDir):
-        #    return
-        #filelist = glob.glob(os.path.join(self.egDir, '*.JPG'))
-        """
+        self.egDir = os.path.join(r'./Examples/demo')
+        print os.path.exists(self.egDir)
+        if not os.path.exists(self.egDir):
+            return
+        filelist = glob.glob(os.path.join(self.egDir, '*.jpg'))
         self.tmp = []
         self.egList = []
         random.shuffle(filelist)
@@ -200,13 +212,14 @@ class LabelTool():
             self.tmp.append(im.resize(new_size, Image.ANTIALIAS))
             self.egList.append(ImageTk.PhotoImage(self.tmp[-1]))
             self.egLabels[i].config(image = self.egList[-1], width = SIZE[0], height = SIZE[1])
-        """
+
         self.loadImage()
         print '%d images loaded from %s' %(self.total, s)
 
     def loadImage(self):
         # load image
         imagepath = self.imageList[self.cur - 1]
+        print "Abriendo: " + imagepath
         self.img = Image.open(imagepath)
         size_img=int(self.img.size[0]*self.scale),int(self.img.size[1]*self.scale)
         self.img=self.img.resize(size_img, Image.ANTIALIAS)
@@ -304,13 +317,45 @@ class LabelTool():
         self.listbox.delete(0, len(self.bboxList))
         self.bboxIdList = []
         self.bboxList = []
-
+    def set0(self, event = None):
+        self.currentLabelclass = 'Peaton-0'
+        print 'set label class to :',self.currentLabelclass
+    def set1(self, event = None):
+    	self.currentLabelclass = 'Particular-1'
+    	print 'set label class to :',self.currentLabelclass
+    def set2(self, event = None):
+    	self.currentLabelclass = 'Taxi-2'
+    	print 'set label class to :',self.currentLabelclass
+    def set3(self, event = None):
+    	self.currentLabelclass = 'Motociclista-3'
+    	print 'set label class to :',self.currentLabelclass
+    def set4(self, event = None):
+    	self.currentLabelclass = 'Bus-4'
+    	print 'set label class to :',self.currentLabelclass
+    def set5(self, event = None):
+    	self.currentLabelclass = 'Camion-5'
+    	print 'set label class to :',self.currentLabelclass
+    def set6(self, event = None):
+    	self.currentLabelclass = 'Minivan-6'
+    	print 'set label class to :',self.currentLabelclass
+    def set7(self, event = None):
+    	self.currentLabelclass = 'Ciclista-7'
+    	print 'set label class to :',self.currentLabelclass
+    def set8(self, event = None):
+    	self.currentLabelclass = 'Tractomula-8'
+    	print 'set label class to :',self.currentLabelclass
+    def set9(self, event = None):
+    	self.currentLabelclass = 'Scooter-9'
+    	print 'set label class to :',self.currentLabelclass
+    def setq(self, event = None):
+    	self.currentLabelclass = 'Mototaxi-10'
+    	print 'set label class to :',self.currentLabelclass
+		
     def prevImage(self, event = None):
         self.saveImage()
         if self.cur > 1:
             self.cur -= 1
             self.loadImage()
-
 
     def nextImage(self, event = None):
         self.saveImage()

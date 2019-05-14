@@ -7,3 +7,5 @@ Camion-5
 Minivan-6
 Ciclista-7
 Tractomula-8
+Scooter-9
+Mototaxi-10
