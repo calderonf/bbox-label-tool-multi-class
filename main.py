@@ -76,7 +76,7 @@ class LabelTool():
         self.parent.bind("s", self.cancelBBox)# press 's' to cancel 
         self.parent.bind("a", self.prevImage) # press 'a' to go backforward
         self.parent.bind("d", self.nextImage) # press 'd' to go forward
-		self.parent.bind("0", self.set0) # press '0' to Set Class To 0
+        self.parent.bind("0", self.set0) # press '0' to Set Class To 0
         self.parent.bind("1", self.set1) # press '1' to Set Class To 1
         self.parent.bind("2", self.set2) # press '2' to Set Class To 2
         self.parent.bind("3", self.set3) # press '3' to Set Class To 3
@@ -178,10 +178,10 @@ class LabelTool():
         self.imageDir = os.path.join(r'./Images', '%03d' %(self.category))
         #print self.imageDir 
         #print self.category
-        self.imageList = glob.glob(os.path.join(self.imageDir, '*.jpg'))
+        self.imageList = glob.glob(os.path.join(self.imageDir, '*.JPG'))
         #print self.imageList
         if len(self.imageList) == 0:
-            print 'No .jpg images found in the specified dir!'
+            print 'No .JPG images found in the specified dir!'
             return
 
         # default to the 1st image in the collection
@@ -197,8 +197,8 @@ class LabelTool():
         #self.egDir = os.path.join(r'./Examples', '%03d' %(self.category))
         self.egDir = os.path.join(r'./Examples/demo')
         print os.path.exists(self.egDir)
-        if not os.path.exists(self.egDir):
-            return
+        #if not os.path.exists(self.egDir):
+        #    return
         filelist = glob.glob(os.path.join(self.egDir, '*.jpg'))
         self.tmp = []
         self.egList = []
@@ -319,36 +319,57 @@ class LabelTool():
         self.bboxList = []
     def set0(self, event = None):
         self.currentLabelclass = 'Peaton-0'
+        self.classcandidate.set('Peaton-0')
         print 'set label class to :',self.currentLabelclass
+    
     def set1(self, event = None):
     	self.currentLabelclass = 'Particular-1'
+        self.classcandidate.set('Particular-1')
     	print 'set label class to :',self.currentLabelclass
+
     def set2(self, event = None):
     	self.currentLabelclass = 'Taxi-2'
+        self.classcandidate.set('Taxi-2')
     	print 'set label class to :',self.currentLabelclass
+
     def set3(self, event = None):
     	self.currentLabelclass = 'Motociclista-3'
+        self.classcandidate.set('Motociclista-3')
     	print 'set label class to :',self.currentLabelclass
+
     def set4(self, event = None):
     	self.currentLabelclass = 'Bus-4'
+        self.classcandidate.set('Bus-4')
     	print 'set label class to :',self.currentLabelclass
+
     def set5(self, event = None):
     	self.currentLabelclass = 'Camion-5'
+        self.classcandidate.set('Camion-5')
     	print 'set label class to :',self.currentLabelclass
+
     def set6(self, event = None):
     	self.currentLabelclass = 'Minivan-6'
+        self.classcandidate.set('Minivan-6')
     	print 'set label class to :',self.currentLabelclass
+
     def set7(self, event = None):
     	self.currentLabelclass = 'Ciclista-7'
+        self.classcandidate.set('Ciclista-7')
     	print 'set label class to :',self.currentLabelclass
+
     def set8(self, event = None):
     	self.currentLabelclass = 'Tractomula-8'
+        self.classcandidate.set('Tractomula-8')
     	print 'set label class to :',self.currentLabelclass
+
     def set9(self, event = None):
     	self.currentLabelclass = 'Scooter-9'
+        self.classcandidate.set('Scooter-9')
     	print 'set label class to :',self.currentLabelclass
+
     def setq(self, event = None):
     	self.currentLabelclass = 'Mototaxi-10'
+        self.classcandidate.set('Mototaxi-10')
     	print 'set label class to :',self.currentLabelclass
 		
     def prevImage(self, event = None):
